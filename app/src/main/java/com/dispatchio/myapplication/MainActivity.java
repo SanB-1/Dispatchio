@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             int iti = 0;
             EditText t = findViewById(R.id.fever);
             String myUnit = t.getText().toString();
-            org.jsoup.nodes.Document doc = null;
+            org.jsoup.nodes.Document doc;
 
             try {
                 while (validatorX == true){
