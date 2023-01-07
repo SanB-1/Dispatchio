@@ -18,6 +18,9 @@ import android.widget.EditText;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     iti = iti + 1;
                     Log.d("info", "again " + iti);
                     doc = Jsoup.connect("https://www.lcwc911.us/live-incident-list").get();
+                    TimeUnit.SECONDS.sleep(10);
                     Elements area;
                     if (doc.toString().contains("Active Fire Incidents")
                             && doc.toString().contains("Active Traffic Incidents")) {
@@ -111,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;
